@@ -1,0 +1,175 @@
+Script started on 2024-04-07 21:05:56-04:00
+bash-4.4$ uname -a
+Linux zeus-1.cec.gmu.edu 4.18.0-348.23.1.el8_5.x86_64 #1 SMP Tue Apr 12 11:20:32 EDT 2022 x86_64 x86_64 x86_64 GNU/Linux
+bash-4.4$ cat lab9_falizai4_202.c
+/* Faryal Alizai G01364057
+ * CS 262, Section 202
+ * Lab 9
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct DOB {
+    int day;
+    int month;
+    int year;
+} DOB;
+
+typedef struct Employee {
+    int ID;
+    char FirstName[50];
+    char LastName[50];
+    DOB birthDate;
+    double Salary;
+} Employee;
+
+void insertData(Employee** database, int* size);
+void updateData(Employee* database, int size);
+void searchEmployee(Employee* database, int size);
+void printDatabase(Employee* database, int size);
+void freeDatabase(Employee* database, int size);
+
+int main() {
+    char choice_str[2];
+    int size = 3;
+    Employee* database = malloc(size * sizeof(Employee));
+    
+    if (database == NULL) {
+        printf("Memory failed.\n");
+        return 1;
+    }
+
+    char choice;
+    
+    do {
+        printf("\nEnter your Choice:\n");
+        printf("'i' - Insert data\n");
+        printf("'u' - Update data\n");
+        printf("'s' - Search employee\n");
+        printf("'p' - Print the database\n");
+        printf("'q' - Quit\n");
+        
+        fgets(choice_str, sizeof(choice_str), stdin);
+        choice = choice_str[0];
+        
+        switch (choice) {
+            case 'i':
+                insertData(&database, &size);
+                break;
+            case 'u':
+                updateData(database, size);
+                break;
+            case 's':
+                searchEmployee(database, size);
+                break;
+            case 'p':
+                printDatabase(database, size);
+                break;
+            case 'q':
+                freeDatabase(database, size);
+                printf("Quitting...\n");
+                break;
+            default:
+                printf("%c is not a valid choice. Please try again.\n", choice);
+        }
+    } while (choice != 'q');
+    
+    return 0;
+}
+
+void insertData(Employee** database, int* size) {
+    
+}
+
+void updateData(Employee* database, int size) {
+    
+}
+
+void searchEmployee(Employee* database, int size) {
+
+}
+
+void printDatabase(Employee* database, int size) {
+
+}
+
+void freeDatabase(Employee* database, int size) {
+    free(database);
+}
+bash-4.4$ ls
+lab9_falizai4_202.c  lab9script_falizai4_202  Makefile
+bash-4.4$ make
+gcc lab9_falizai4_202.c -o lab9_falizai4_202  -lm
+bash-4.4$ ls
+lab9_falizai4_202  lab9_falizai4_202.c	lab9script_falizai4_202  Makefile
+bash-4.4$ ./lab9_falizai4_202
+
+Enter your Choice:
+'i' - Insert data
+'u' - Update data
+'s' - Search employee
+'p' - Print the database
+'q' - Quit
+123
+1 is not a valid choice. Please try again.
+
+Enter your Choice:
+'i' - Insert data
+'u' - Update data
+'s' - Search employee
+'p' - Print the database
+'q' - Quit
+2 is not a valid choice. Please try again.
+
+Enter your Choice:
+'i' - Insert data
+'u' - Update data
+'s' - Search employee
+'p' - Print the database
+'q' - Quit
+3 is not a valid choice. Please try again.
+
+Enter your Choice:
+'i' - Insert data
+'u' - Update data
+'s' - Search employee
+'p' - Print the database
+'q' - Quit
+
+ is not a valid choice. Please try again.
+
+Enter your Choice:
+'i' - Insert data
+'u' - Update data
+'s' - Search employee
+'p' - Print the database
+'q' - Quit
+i
+
+Enter your Choice:
+'i' - Insert data
+'u' - Update data
+'s' - Search employee
+'p' - Print the database
+'q' - Quit
+
+ is not a valid choice. Please try again.
+
+Enter your Choice:
+'i' - Insert data
+'u' - Update data
+'s' - Search employee
+'p' - Print the database
+'q' - Quit
+q
+Quitting...
+bash-4.4$ make clean
+rm lab9_falizai4_202
+bash-4.4$ ls
+lab9_falizai4_202.c  lab9script_falizai4_202  Makefile
+bash-4.4$ e[Kexit
+exit
+
+Script done on 2024-04-07 21:06:54-04:00

@@ -1,0 +1,103 @@
+Script started on 2024-02-04 13:11:47-05:00
+bash-4.4$ -[Kuname - a[K[Ka
+Linux zeus-1.cec.gmu.edu 4.18.0-348.23.1.el8_5.x86_64 #1 SMP Tue Apr 12 11:20:32 EDT 2022 x86_64 x86_64 x86_64 GNU/Linux
+bash-4.4$ ls
+lab2  lab2_falizai4_202  lab2_falizai4_202.c  lab2_typescript_falizai4_202  Makefile
+bash-4.4$ cat lab2_falizai4_202.c
+/*
+ * Faryal Alizai G01364057
+ * CS 262, Lab Section 202
+ * Lab2
+*/
+
+#include <stdio.h>
+#include <math.h>
+
+#define BSA1 0.007184
+#define BSA2 0.425
+#define BSA3 0.725
+
+int main() {
+	char buffer[10];
+
+	float h;
+	printf("Please enter the height\n");
+	fgets(buffer, 10, stdin);
+	sscanf(buffer, "%f", &h);
+
+	float w;
+	printf("Please enter the weight\n");
+	fgets(buffer, 10, stdin);
+	sscanf(buffer, "%f", &w);
+
+	double BSA = BSA1 * pow(w, BSA2) * pow(h, BSA3);
+
+	printf("The Height is: %.1f cms\n", h);
+	printf("The Weight is: %1.f kgs\n", w);
+	printf("BSA: %.4f meter square\n", BSA);
+}
+bash-4.4$ cat Makefile
+#Faryal Alizai G01364057
+#CS 262, Lab Section 202
+#Lab 2
+
+CC = gcc
+CFLAGS = -g -Wall -std=c99 -pedantic-errors
+LIBS = -lm
+all: lab2_falizai4_202.c
+	$(CC) lab2_falizai4_202.c -o lab2_falizai4_202 $(CFLAGS) $(LIBS)
+clean:
+	rm lab2_falizai4_202
+bash-4.4$ make
+gcc lab2_falizai4_202.c -o lab2_falizai4_202 -g -Wall -std=c99 -pedantic-errors -lm
+bash-4.4$ ls
+lab2  lab2_falizai4_202  lab2_falizai4_202.c  lab2_typescript_falizai4_202  Makefile
+bash-4.4$ /[K./lab2
+Please enter the height
+150.5  
+Please enter the weight
+180.3
+The Height is: 150.5 cms
+The Weight is: 180 kgs
+BSA: 2.4767 meter square
+bash-4.4$ 100.7[K[K[K[K[K./lab2
+Please enter the height
+100.7
+Please enter the weight
+167.3
+The Height is: 100.7 cms
+The Weight is: 167 kgs
+BSA: 1.7929 meter square
+bash-4.4$ ./ka[K[Klab2
+Please enter the height
+98
+Please enter the weight
+210
+The Height is: 98.0 cms
+The Weight is: 210 kgs
+BSA: 1.9362 meter square
+bash-4.4$ ./lab2
+Please enter the height
+72.0
+Please enter the weight
+178.9    68.9
+The Height is: 72.0 cms
+The Weight is: 169 kgs
+BSA: 1.4115 meter square
+bash-4.4$ ./lab2
+Please enter the height
+59.9
+Please enter the weight
+189.4
+The Height is: 59.9 cms
+The Weight is: 189 kgs
+BSA: 1.2968 meter square
+bash-4.4$ make[K[K[K[Kmake falizai4[K[K[K[K[K[K[K[Klab2_falizai4_202
+make: 'lab2_falizai4_202' is up to date.
+bash-4.4$ ls
+lab2  lab2_falizai4_202  lab2_falizai4_202.c  lab2_typescript_falizai4_202  Makefile
+bash-4.4$ ls
+lab2  lab2_falizai4_202  lab2_falizai4_202.c  lab2_typescript_falizai4_202  Makefile
+bash-4.4$ exit
+
+Script done on 2024-02-04 13:14:58-05:00

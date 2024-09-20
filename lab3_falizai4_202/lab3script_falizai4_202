@@ -1,0 +1,465 @@
+Script started on 2024-02-11 23:16:08-05:00
+bash-4.4$ -uname -a
+bash: -uname: command not found
+bash-4.4$ uname -a
+Linux zeus-2.cec.gmu.edu 4.18.0-348.23.1.el8_5.x86_64 #1 SMP Tue Apr 12 11:20:32 EDT 2022 x86_64 x86_64 x86_64 GNU/Linux
+bash-4.4$ ls
+lab3		   lab3_falizai4_202.c	lab3_output.out		 Makefile
+lab3_falizai4_202  lab3_input.txt	lab3script_falizai4_202
+bash-4.4$ mkae[K[K[K[Kmake
+make: Nothing to be done for 'all'.
+bash-4.4$ all
+bash: all: command not found
+bash-4.4$ make all
+make: Nothing to be done for 'all'.
+bash-4.4$ mk[Kakeall
+bash: makeall: command not found
+bash-4.4$ ls
+lab3		   lab3_falizai4_202.c	lab3_output.out		 Makefile
+lab3_falizai4_202  lab3_input.txt	lab3script_falizai4_202
+bash-4.4$ cat lab3_falizai3[K4_202.c
+/*
+ Faryal Alizai G
+ CS 262, Lab Section 202
+ Lab 3
+ */
+
+#include <stdio.h>
+#include <string.h>
+
+char menuOption();
+char getCharValue();
+int getNumValue();
+int checkNumValue(int userValue);
+void printLine(int N, char C);
+void printSquare(int N, char C);
+void printRectangle(int N, char C);
+void printTriangle(int N, char C);
+void menu();
+
+int main() {
+	char option;
+	char charValue = '\0';
+	int numValue = 0;
+
+	void printLine(int N, char C);
+	void printSquare(int N, char C);
+	void printRectangle(int N, char C);
+	void printTriangle(int n, char C);
+
+	do {
+		menu();
+		option = menuOption();
+		
+		switch(option) {
+			
+		case 'C':
+		case 'c':
+			printf("Enter/Change Character:\n ");
+			charValue = getCharValue();
+			break;
+		
+		case 'N':
+		case 'n':
+			printf("Enter/Change Number:\n ");
+			numValue = getNumValue();
+			printf("Enter a number between 1 and 15:\n ");
+			numValue = checkNumValue(numValue);
+			break;
+
+		case 'L':
+		case 'l':
+			printLine(numValue, charValue);
+			break;
+
+		case 'S':
+		case 's':
+			printSquare(numValue, charValue);
+			break;
+
+		case 'R':
+		case 'r':
+			printRectangle(numValue, charValue);
+			break;
+
+		case 'T':
+		case 't':
+			printTriangle(numValue, charValue);
+			break;
+
+		case 'Q':
+		case 'q':
+			printf("Quitting the program\n");
+			break;
+
+		default:
+		printf("Invalid Choice\n");
+		}
+	}
+	while(option != 'Q' && option != 'q');
+	return 0;
+}
+
+void menu() {
+
+	printf("Menu\n");
+	printf("C/c: Enter/Change Character\n");
+	printf("N/n: Enter/Chance Number\n");
+	printf("L/l: Print Line\n");
+	printf("S/s: Print Square\n");
+	printf("R/r: Print Rectangle\n");
+	printf("T/t: Print Triangle\n");
+	printf("Q/q: Quit Program\n");
+	printf("Enter input:\n");
+}
+char menuOption() {
+	char valueString[15];
+	char option;
+
+	do {
+		fgets(valueString, sizeof(valueString), stdin);
+		sscanf(valueString, "%c", &option);
+
+		if ((option >= 'A' && option <= 'Z') || (option >= 'a' && option <= 'z')) {
+			return option;
+		} else {
+			printf("Invalid choice\n");
+		}
+	} while(option != 'Q' && option != 'q');
+	return option;
+}
+
+char getCharValue() {
+	char character;
+	char valueChar[15];
+
+	fgets(valueChar, sizeof(valueChar), stdin);
+	sscanf(valueChar, "%c", &character);
+
+	return character;
+}
+int getNumValue() {
+	int number;
+	char valueChar[15];
+	
+	fgets(valueChar, sizeof(valueChar), stdin);
+	sscanf(valueChar, "%d", &number);
+	
+	return number;
+}
+int checkNumValue(int userValue) {
+	while(userValue <0 || userValue > 16){
+		printf("Enter a number between 1 and 15:\n ");
+		char valueChar[15];
+		
+		fgets(valueChar, sizeof(valueChar), stdin);
+		sscanf(valueChar, "%d", &userValue);
+	}
+	return userValue;
+}
+
+void printLine(int N, char C) {
+	for(int i = 0; i <N; ++i) {
+		printf("%c\n", C);
+	}
+}
+
+void printSquare(int N, char C) {
+	for(int i = 0; i < N; ++i) {
+		for(int j = 0; j <N; ++j) {
+			printf("%c", C);
+		}
+		printf("\n");
+	}
+}
+
+void printRectangle(int N, char C) {
+	int width = N + 5;
+	for(int i = 0; i < N; ++i) {
+		for(int j = 0; j < width; ++j) {
+			printf("%c", C);
+		}
+		printf("\n");
+	}
+}
+
+void printTriangle(int N, char C) {
+	for(int i = 0; i < N; ++i) {
+		for(int j = 0; j <= i; ++j) {
+			printf("%c", C);
+		}
+		printf("\n");
+	}
+}
+
+bash-4.4$ ./lab3_faliza[K[K[Kizai4_202 >[K>[K< lab3_input.txt
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Enter/Change Number:
+ Enter a number between 1 and 15:
+ Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Invalid choice
+Invalid choice
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Enter/Change Character:
+ Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Enter/Change Number:
+ Enter a number between 1 and 15:
+ Enter a number between 1 and 15:
+ Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+$
+$$
+$$$
+$$$$
+$$$$$
+$$$$$$
+$$$$$$$
+$$$$$$$$
+$$$$$$$$$
+$$$$$$$$$$
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Enter/Change Number:
+ Enter a number between 1 and 15:
+ Enter a number between 1 and 15:
+ Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+$
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+$
+$$
+$$$
+$$$$
+$$$$$
+$$$$$$
+$$$$$$$
+$$$$$$$$
+$$$$$$$$$
+$$$$$$$$$$
+$$$$$$$$$$$
+$$$$$$$$$$$$
+$$$$$$$$$$$$$
+$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Invalid Choice
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Enter/Change Character:
+ Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Enter/Change Number:
+ Enter a number between 1 and 15:
+ Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+n
+nn
+nnn
+Menu
+C/c: Enter/Change Character
+N/n: Enter/Chance Number
+L/l: Print Line
+S/s: Print Square
+R/r: Print Rectangle
+T/t: Print Triangle
+Q/q: Quit Program
+Enter input:
+Quitting the program
+bash-4.4$ ls
+lab3		   lab3_falizai4_202.c	lab3_output.out		 Makefile
+lab3_falizai4_202  lab3_input.txt	lab3script_falizai4_202
+bash-4.4$ exit
+
+Script done on 2024-02-11 23:18:33-05:00

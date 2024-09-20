@@ -1,0 +1,347 @@
+Script started on 2024-04-21 15:41:25-04:00
+bash-4.4$ uname -a
+Linux zeus-1.cec.gmu.edu 4.18.0-348.23.1.el8_5.x86_64 #1 SMP Tue Apr 12 11:20:32 EDT 2022 x86_64 x86_64 x86_64 GNU/Linux
+bash-4.4$ cat fa[K[Klab11_falizai4_202.c
+/* Faryal Alizai G01364057
+ * CS 262, Lab Section 202
+ * Lab 11
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define BYTETOBINARYPATTERN "%d%d%d%d%d%d%d%d"
+#define BYTETOBINARY(byte) \
+    (byte & 0x80 ? 1 : 0), \
+    (byte & 0x40 ? 1 : 0), \
+    (byte & 0x20 ? 1 : 0), \
+    (byte & 0x10 ? 1 : 0), \
+    (byte & 0x08 ? 1 : 0), \
+    (byte & 0x04 ? 1 : 0), \
+    (byte & 0x02 ? 1 : 0), \
+    (byte & 0x01 ? 1 : 0)
+#define PRINTBIN(x) printf(BYTETOBINARYPATTERN, BYTETOBINARY(x)); printf("\n");
+
+void setlsbs(unsigned char *p, unsigned char b0) {
+    for (int i = 0; i < 8; i++) {
+        p[i] = (p[i] & 0xFE) | ((b0 >> i) & 1);
+    }
+}
+
+unsigned char getlsbs(unsigned char *p) {
+    unsigned char byte0 = 0;
+    for (int i = 0; i < 8; i++) {
+        byte0 |= (p[i] & 0x01) << i;
+    }
+    return byte0;
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        printf("Usage: %s <seed>\n", argv[0]);
+        return 1;
+    }
+
+    srand(atoi(argv[1]));
+
+    unsigned char p[8];
+    printf("Values in decimal and binary format:\n");
+    for (int i = 0; i < 8; i++) {
+        p[i] = rand() % 256;
+        printf("%3u = ", p[i]);
+        PRINTBIN(p[i]);
+    }
+
+    unsigned char byte0 = rand() % 256;
+    printf("\nByte0 in decimal and binary format:\n");
+    printf("%3u = ", byte0);
+    PRINTBIN(byte0);
+    printf("------------------------\n");
+
+    setlsbs(p, byte0);
+
+    printf("Binary and decimal values after modification:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("%3u = ", p[i]);
+        PRINTBIN(p[i]);
+    }
+
+    unsigned char getbyte0 = getlsbs(p);
+    printf("\nValue returned by getlsbs in decimal and binary format:\n");
+    printf("%3u = ", getbyte0);
+    PRINTBIN(getbyte0);
+
+    return 0;
+}
+bash-4.4$ make
+gcc lab11_falizai4_202.c -o lab11_falizai4_202  -lm
+bash-4.4$ ls
+lab11_falizai4_202  lab11_falizai4_202.c  lab11Script_falizai4_202  Makefile
+bash-4.4$ ./lab11f[K_falizai4_202 123
+Values in decimal and binary format:
+161 = 10100001
+149 = 10010101
+113 = 01110001
+126 = 01111110
+135 = 10000111
+251 = 11111011
+107 = 01101011
+190 = 10111110
+
+Byte0 in decimal and binary format:
+170 = 10101010
+------------------------
+Binary and decimal values after modification:
+160 = 10100000
+149 = 10010101
+112 = 01110000
+127 = 01111111
+134 = 10000110
+251 = 11111011
+106 = 01101010
+191 = 10111111
+
+Value returned by getlsbs in decimal and binary format:
+170 = 10101010
+bash-4.4$ ./lab11 [K_falizai4_202 456
+Values in decimal and binary format:
+207 = 11001111
+ 91 = 01011011
+ 72 = 01001000
+105 = 01101001
+ 39 = 00100111
+231 = 11100111
+125 = 01111101
+225 = 11100001
+
+Byte0 in decimal and binary format:
+ 11 = 00001011
+------------------------
+Binary and decimal values after modification:
+207 = 11001111
+ 91 = 01011011
+ 72 = 01001000
+105 = 01101001
+ 38 = 00100110
+230 = 11100110
+124 = 01111100
+224 = 11100000
+
+Value returned by getlsbs in decimal and binary format:
+ 11 = 00001011
+bash-4.4$ ./lab11_falizai4_202 789
+Values in decimal and binary format:
+105 = 01101001
+169 = 10101001
+143 = 10001111
+ 14 = 00001110
+ 61 = 00111101
+ 61 = 00111101
+213 = 11010101
+158 = 10011110
+
+Byte0 in decimal and binary format:
+147 = 10010011
+------------------------
+Binary and decimal values after modification:
+105 = 01101001
+169 = 10101001
+142 = 10001110
+ 14 = 00001110
+ 61 = 00111101
+ 60 = 00111100
+212 = 11010100
+159 = 10011111
+
+Value returned by getlsbs in decimal and binary format:
+147 = 10010011
+bash-4.4$ ./lab11_falizai4_202 1011
+Values in decimal and binary format:
+ 54 = 00110110
+ 23 = 00010111
+199 = 11000111
+201 = 11001001
+ 57 = 00111001
+ 60 = 00111100
+ 19 = 00010011
+204 = 11001100
+
+Byte0 in decimal and binary format:
+205 = 11001101
+------------------------
+Binary and decimal values after modification:
+ 55 = 00110111
+ 22 = 00010110
+199 = 11000111
+201 = 11001001
+ 56 = 00111000
+ 60 = 00111100
+ 19 = 00010011
+205 = 11001101
+
+Value returned by getlsbs in decimal and binary format:
+205 = 11001101
+bash-4.4$ ./kab[K[K[Klab11_falz[Kizai4_202 13151
+Values in decimal and binary format:
+ 82 = 01010010
+140 = 10001100
+126 = 01111110
+150 = 10010110
+ 20 = 00010100
+ 14 = 00001110
+ 99 = 01100011
+184 = 10111000
+
+Byte0 in decimal and binary format:
+197 = 11000101
+------------------------
+Binary and decimal values after modification:
+ 83 = 01010011
+140 = 10001100
+127 = 01111111
+150 = 10010110
+ 20 = 00010100
+ 14 = 00001110
+ 99 = 01100011
+185 = 10111001
+
+Value returned by getlsbs in decimal and binary format:
+197 = 11000101
+bash-4.4$ ./lab11_falizai4_202 161718
+Values in decimal and binary format:
+170 = 10101010
+ 64 = 01000000
+241 = 11110001
+ 12 = 00001100
+246 = 11110110
+ 70 = 01000110
+130 = 10000010
+112 = 01110000
+
+Byte0 in decimal and binary format:
+151 = 10010111
+------------------------
+Binary and decimal values after modification:
+171 = 10101011
+ 65 = 01000001
+241 = 11110001
+ 12 = 00001100
+247 = 11110111
+ 70 = 01000110
+130 = 10000010
+113 = 01110001
+
+Value returned by getlsbs in decimal and binary format:
+151 = 10010111
+bash-4.4$ ./lab11_falizai4_202.c[K[K 1920
+Values in decimal and binary format:
+135 = 10000111
+214 = 11010110
+ 62 = 00111110
+  9 = 00001001
+194 = 11000010
+ 46 = 00101110
+111 = 01101111
+186 = 10111010
+
+Byte0 in decimal and binary format:
+ 56 = 00111000
+------------------------
+Binary and decimal values after modification:
+134 = 10000110
+214 = 11010110
+ 62 = 00111110
+  9 = 00001001
+195 = 11000011
+ 47 = 00101111
+110 = 01101110
+186 = 10111010
+
+Value returned by getlsbs in decimal and binary format:
+ 56 = 00111000
+bash-4.4$ ./lab11_falizai4_202 222333
+Values in decimal and binary format:
+159 = 10011111
+113 = 01110001
+230 = 11100110
+ 70 = 01000110
+ 40 = 00101000
+193 = 11000001
+ 45 = 00101101
+243 = 11110011
+
+Byte0 in decimal and binary format:
+ 81 = 01010001
+------------------------
+Binary and decimal values after modification:
+159 = 10011111
+112 = 01110000
+230 = 11100110
+ 70 = 01000110
+ 41 = 00101001
+192 = 11000000
+ 45 = 00101101
+242 = 11110010
+
+Value returned by getlsbs in decimal and binary format:
+ 81 = 01010001
+bash-4.4$ /[K./lab11_fakiz[K[K[Klizai4_2021[K 1112[K3
+Values in decimal and binary format:
+ 64 = 01000000
+216 = 11011000
+153 = 10011001
+223 = 11011111
+ 20 = 00010100
+125 = 01111101
+114 = 01110010
+214 = 11010110
+
+Byte0 in decimal and binary format:
+220 = 11011100
+------------------------
+Binary and decimal values after modification:
+ 64 = 01000000
+216 = 11011000
+153 = 10011001
+223 = 11011111
+ 21 = 00010101
+124 = 01111100
+115 = 01110011
+215 = 11010111
+
+Value returned by getlsbs in decimal and binary format:
+220 = 11011100
+bash-4.4$ ./lab11_falizai4_101.[K[K[K[K202 2[K150
+Values in decimal and binary format:
+ 35 = 00100011
+112 = 01110000
+ 67 = 01000011
+ 71 = 01000111
+224 = 11100000
+107 = 01101011
+104 = 01101000
+210 = 11010010
+
+Byte0 in decimal and binary format:
+ 40 = 00101000
+------------------------
+Binary and decimal values after modification:
+ 34 = 00100010
+112 = 01110000
+ 66 = 01000010
+ 71 = 01000111
+224 = 11100000
+107 = 01101011
+104 = 01101000
+210 = 11010010
+
+Value returned by getlsbs in decimal and binary format:
+ 40 = 00101000
+bash-4.4$ make clean
+rm lab11_falizai4_202     
+bash-4.4$ ls
+lab11_falizai4_202.c  lab11Script_falizai4_202	Makefile
+bash-4.4$ exit [K
+exit
+
+Script done on 2024-04-21 15:43:55-04:00

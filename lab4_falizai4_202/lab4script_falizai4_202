@@ -1,0 +1,95 @@
+Script started on 2024-02-18 22:35:48-05:00
+bash-4.4$ -uname[K[K[K[K[K[Kunam[K[Kame -a
+Linux zeus-1.cec.gmu.edu 4.18.0-348.23.1.el8_5.x86_64 #1 SMP Tue Apr 12 11:20:32 EDT 2022 x86_64 x86_64 x86_64 GNU/Linux
+bash-4.4$ ls
+lab4		   lab4_falizai4_202.c	    Makefile
+lab4_falizai4_202  lab4script_falizai4_202
+bash-4.4$ cat fa[K[Klab4_falizai4_202.c
+/* Faryal Alizai G01364057
+CS 262, Lab Section 202
+Lab 4
+*/
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int angle;
+	
+	printf("Enter the angle:");
+	scanf("%d", &angle);
+	
+	if(angle < 0 || angle > 180) {
+		printf("Invalid input");
+		return 1;
+	}
+	
+	printf("Hours where the hands are %d degrees apart:\n", angle);
+	
+	for(int hour =0; hour < 12; hour++) {
+		for(int min = 0; min < 60; min += 6) {
+
+			int hourAngle = (hour * 60 + min) * 360 / (12 * 60);
+			int minAngle = min * 360 / 60;
+
+			int angleDifference = abs(hourAngle - minAngle);
+
+			if(angleDifference > 180) {
+				angleDifference = 360 - angleDifference;
+			}
+
+			if(angleDifference == angle && (min == 0 || min == 30)) {
+				printf("%02d:00\n", hour);
+			}
+		}
+	}
+	if(angle % 90 != 0) {
+		printf("There is no hour where the hands are %d degrees apart.\n", angle);
+	}
+	
+	return 0;
+}
+bash-4.4$ l[Kcat ma[K[KMakefile
+#Faryal Alizai G01364057
+#CS 262, Lab Section 202
+#Lab 4
+
+CC = gcc
+CFLAGS = -g -Wall -std=c99 -pedantic-errors
+LIBS = -lm
+all: lab4_falizai4_202.c
+	$(CC) lab4_falizai4_202.c -o lab4_falizai4_202 $(CFLAGS) $(LIBS)
+clean:
+	rm lab4_falizai4_202
+bash-4.4$ make
+gcc lab4_falizai4_202.c -o lab4_falizai4_202 -g -Wall -std=c99 -pedantic-errors -lm
+bash-4.4$ ls
+lab4		   lab4_falizai4_202.c	    Makefile
+lab4_falizai4_202  lab4script_falizai4_202
+bash-4.4$ ./lab4
+Enter the angle:90
+Hours where the hands are 90 degrees apart:
+03:00
+09:00
+bash-4.4$ ./lab4
+Enter the angle:65
+Hours where the hands are 65 degrees apart:
+There is no hour where the hands are 65 degrees apart.
+bash-4.4$ ./lab4
+Enter the angle:66
+Hours where the hands are 66 degrees apart:
+There is no hour where the hands are 66 degrees apart.
+bash-4.4$ ./lan[Kb5[K4
+Enter the angle:67
+Hours where the hands are 67 degrees apart:
+There is no hour where the hands are 67 degrees apart.
+bash-4.4$ ./lab4
+Enter the angle:0
+Hours where the hands are 0 degrees apart:
+00:00
+bash-4.4$ make clean
+rm lab4_falizai4_202
+bash-4.4$ exit
+
+Script done on 2024-02-18 22:37:40-05:00
