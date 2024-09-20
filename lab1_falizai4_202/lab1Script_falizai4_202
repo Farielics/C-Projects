@@ -1,0 +1,74 @@
+Script started on 2024-01-21 12:17:29-05:00
+bash-4.4$ Type:date
+bash: Type:date: command not found
+bash-4.4$ date
+Sun Jan 21 12:17:44 EST 2024
+bash-4.4$ uname - a[K[Ka
+Linux zeus-1.cec.gmu.edu 4.18.0-348.23.1.el8_5.x86_64 #1 SMP Tue Apr 12 11:20:32 EDT 2022 x86_64 x86_64 x86_64 GNU/Linux
+bash-4.4$ pwd
+/home/falizai4/CS262/lab1_falizai4_202
+bash-4.4$ ls
+lab1  lab1_falizai4_202  lab1_falizai4_202.c  lab1Script_falizai4_202  Makefile
+bash-4.4$ cat_lab1_falizai4_202.c
+bash: cat_lab1_falizai4_202.c: command not found
+bash-4.4$ cat lab1_falizai4_c[K202.c
+/*
+Faryal Alizai G01364057
+CS 262, Lab section 202
+Lab1: printing hello world with my name
+*/
+#include <stdio.h>
+
+int main() {
+	char name[100] = "Faryal Alizai/*";
+	printf("Hello World!\nMy name is %s\n", name);
+	return 0;
+}
+
+bash-4.4$ em lab1[K[K[K[K[K[K[Krm lab1_falizai4_202
+bash-4.4$ make all
+gcc lab1_falizai4_202.c -o lab1_falizai4_202 -Wall
+bash-4.4$ ls
+lab1  lab1_falizai4_202  lab1_falizai4_202.c  lab1Script_falizai4_202  Makefile
+bash-4.4$ lab1_falizai4_202
+bash: lab1_falizai4_202: command not found
+bash-4.4$ ./lab1_falizai4_202
+Hello World!
+My name is Faryal Alizai/*
+bash-4.4$ gcc lab1_falizai4_202
+lab1_falizai4_202: In function `_fini':
+(.fini+0x0): multiple definition of `_fini'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crti.o:(.fini+0x0): first defined here
+lab1_falizai4_202: In function `data_start':
+(.data+0x0): multiple definition of `__data_start'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crt1.o:(.data+0x0): first defined here
+lab1_falizai4_202:(.rodata+0x8): multiple definition of `__dso_handle'
+/usr/lib/gcc/x86_64-redhat-linux/8/crtbegin.o:(.rodata+0x0): first defined here
+lab1_falizai4_202:(.rodata+0x0): multiple definition of `_IO_stdin_used'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crt1.o:(.rodata.cst4+0x0): first defined here
+lab1_falizai4_202: In function `_dl_relocate_static_pie':
+(.text+0x30): multiple definition of `_dl_relocate_static_pie'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crt1.o:(.text+0x30): first defined here
+lab1_falizai4_202: In function `_start':
+(.text+0x0): multiple definition of `_start'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crt1.o:(.text+0x0): first defined here
+lab1_falizai4_202: In function `_init':
+(.init+0x0): multiple definition of `_init'
+/usr/lib/gcc/x86_64-redhat-linux/8/../../../../lib64/crti.o:(.init+0x0): first defined here
+/usr/lib/gcc/x86_64-redhat-linux/8/crtend.o:(.tm_clone_table+0x0): multiple definition of `__TMC_END__'
+lab1_falizai4_202:(.data+0x8): first defined here
+/usr/bin/ld: error in lab1_falizai4_202(.eh_frame); no .eh_frame_hdr table will be created.
+collect2: error: ld returned 1 exit status
+bash-4.4$ gcc lab1_falizai4_202.c -o lab1_falizai4_202 -Wall
+bash-4.4$ lab[K[K[Kls
+lab1  lab1_falizai4_202  lab1_falizai4_202.c  lab1Script_falizai4_202  Makefile
+bash-4.4$ lab1_falizai4_202
+bash: lab1_falizai4_202: command not found
+bash-4.4$ /.[K[K./lab1_falizai4_202
+Hello World!
+My name is Faryal Alizai/*
+bash-4.4$ controld -d [K[K[K[K-[K[K-d
+bash: control-d: command not found
+bash-4.4$ exit
+
+Script done on 2024-01-21 12:21:53-05:00
